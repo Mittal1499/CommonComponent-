@@ -1,5 +1,12 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
+import {Icons} from '../../styles';
 
 export default function MyTextInput(props) {
   return (
@@ -18,6 +25,24 @@ export default function MyTextInput(props) {
         autoCapitalize={props.autoCapitalize}
         onEndEditing={props.onEndEditing}
       />
+      {props.showIcon ? (
+        props.hide ? (
+          <TouchableOpacity
+            onPress={props.onPressIcon}
+            style={{
+              position: 'absolute',
+              right: 0,
+            }}>
+            <Icons.Vector />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={props.onPressIcon}
+            style={{position: 'absolute', right: 0}}>
+            <Icons.Vector />
+          </TouchableOpacity>
+        )
+      ) : null}
     </View>
   );
 }
@@ -26,6 +51,12 @@ const styles = StyleSheet.create({
   View: {
     // backgroundColor: 'cyan',
     // padding: '10%',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // flexDirection: 'row',
+    // backgroundColor: 'cyan',
+    // width: '100%',
+    // height: 20,
   },
   input: {
     height: 50,
